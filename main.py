@@ -246,7 +246,14 @@ if "graph" not in st.session_state or init_clicked:
     st.session_state.inv_obj = Inventory(st.session_state.inventory)
 
     # predictor using product base sales (a tiny base pattern)
-    base_sales = {p: max(1, int(0.1 * DEFAULT_QTY)) for p in PRODUCT_PRICES}  # e.g., 5 for 50
+    base_sales = {
+        "Water Bottle": 12,
+        "Chips Pack": 6,
+        "Chocolate": 4,
+        "Sandwich": 3,
+        "Juice": 5
+    }
+    # e.g., 5 for 50
     st.session_state.predictor = SalesPredictor(base_sales, high_demand_multiplier=high_multiplier, high_prob=high_demand_prob)
 
     # battery + bus
